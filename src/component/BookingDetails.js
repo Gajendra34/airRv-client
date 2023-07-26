@@ -24,7 +24,7 @@ function BookingDetails() {
     axios.defaults.withCredentials = true;
 
     useEffect(() => {
-        axios.get('http://localhost:3434/')
+        axios.get('https://airrv-travel.onrender.com/')
             .then(res => {
                 if (res.data.Status === 'Success') {
                     if (res.data.role === 'customer') {
@@ -41,7 +41,7 @@ function BookingDetails() {
             })
 
 
-        axios.get('http://localhost:3434/booking_history/' + id)
+        axios.get('https://airrv-travel.onrender.com/booking_history/' + id)
             .then(res => {
                 if (res.data.Status === 'Success') {
                     setData(res.data.Result)
@@ -53,7 +53,7 @@ function BookingDetails() {
     },[])
 
     const showDetails = (id) => {
-        axios.get('http://localhost:3434/showImg/' + id)
+        axios.get('https://airrv-travel.onrender.com/showImg/' + id)
             .then(res => {
                 if (res.data.Status === 'Success') {
                     setData1(res.data.Result)
@@ -164,7 +164,7 @@ function BookingDetails() {
                                                                                             <div class="d-flex justify-content-between">
                                                                                                 <div className="d-flex align-items-center mb-4">
                                                                                                     <div className="me-3 position-relative">
-                                                                                                        <img onClick={e => showAllDetail(a1._id)} src={'http://localhost:3434/images/' + a1.image1} style={{ height: '96px', width: '96px', cursor: 'pointer' }} className="img-sm rounded border" />
+                                                                                                        <img onClick={e => showAllDetail(a1._id)} src={'https://airrv-travel.onrender.com/images/' + a1.image1} style={{ height: '96px', width: '96px', cursor: 'pointer' }} className="img-sm rounded border" />
                                                                                                     </div>
                                                                                                     <div className="mb-4">
                                                                                                         <div style={{ fontSize: '13px' }} className="nav-link text-muted">

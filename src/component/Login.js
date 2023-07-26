@@ -21,7 +21,7 @@ function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:3434/login', values)
+        axios.post('https://airrv-travel.onrender.com/login', values)
             .then(res => {
                 if (res.data.Status === 'Success') {
                     navigate('/')

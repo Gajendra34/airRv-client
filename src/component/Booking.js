@@ -43,7 +43,7 @@ function Booking() {
 
     const handleSubmit1 = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:3434/pay_detail', values1)
+        axios.post('https://airrv-travel.onrender.com/pay_detail', values1)
             .then(res => {
                 if (res.data.Status === 'Success') {
                     navigate('/')
@@ -65,7 +65,7 @@ function Booking() {
     axios.defaults.withCredentials = true;
 
     useEffect(() => {
-        axios.get('http://localhost:3434/')
+        axios.get('https://airrv-travel.onrender.com/')
             .then(res => {
                 if (res.data.Status === 'Success') {
                     if (res.data.role === 'customer') {
@@ -83,7 +83,7 @@ function Booking() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:3434/login', values)
+        axios.post('https://airrv-travel.onrender.com/login', values)
             .then(res => {
                 if (res.data.Status === 'Success') {
                     setAuth(true)
@@ -318,7 +318,7 @@ function Booking() {
                                 <div class="d-flex justify-content-between">
                                     <div className="d-flex align-items-center mb-4">
                                         <div className="me-3 position-relative">
-                                            <img src={'http://localhost:3434/images/' + location.state.image1} style={{ height: '96px', width: '96px' }} className="img-sm rounded border" />
+                                            <img src={'https://airrv-travel.onrender.com/images/' + location.state.image1} style={{ height: '96px', width: '96px' }} className="img-sm rounded border" />
                                         </div>
                                         <div className="mb-4">
                                             <div style={{ fontSize: '13px' }} className="nav-link text-muted">

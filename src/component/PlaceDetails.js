@@ -30,7 +30,7 @@ function PlaceDetails() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:3434/')
+        axios.get('https://airrv-travel.onrender.com/')
             .then(res => {
                 if (res.data.Status === 'Success') {
                     if (res.data.role === 'customer') {
@@ -48,7 +48,7 @@ function PlaceDetails() {
                 }
             })
 
-        axios.get('http://localhost:3434/placedetail/' + id)
+        axios.get('https://airrv-travel.onrender.com/placedetail/' + id)
             .then(res => {
                 if (res.data.Status === 'Success') {
                     setData(res.data.Result)
@@ -61,7 +61,7 @@ function PlaceDetails() {
 
 
     const handleLogout = () => {
-        axios.get('http://localhost:3434/logout')
+        axios.get('https://airrv-travel.onrender.com/logout')
             .then(res => {
                 setAuth(false)
                 navigate('/placedetails/' + id)
@@ -149,12 +149,12 @@ function PlaceDetails() {
                                                     </li> */}
                                             </ul>
 
-                                            {/* {<img src={'http://localhost:3434/images/' + image}
+                                            {/* {<img src={'https://airrv-travel.onrender.com/images/' + image}
                                                 className=" rounded-circle" height="38" alt="Rv" />} */}
 
                                             <div className="dropdown" style={{ position: 'relative', right: '20px' }}>
                                                 <a className=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    {<img src={'http://localhost:3434/images/' + image}
+                                                    {<img src={'https://airrv-travel.onrender.com/images/' + image}
                                                         className=" rounded-circle" height="38" alt="Rv" />}
                                                 </a>
                                                 <ul
@@ -222,7 +222,7 @@ function PlaceDetails() {
                                     <div id="carouselExampleDark" className="row" data-bs-ride="carousel">
                                         {/* <div class="row" style={{ position: 'relative', justifyContent: 'center' }}> */}
                                         <div class="col-lg-6">
-                                            <img src={'http://localhost:3434/images/' + user.image1}
+                                            <img src={'https://airrv-travel.onrender.com/images/' + user.image1}
                                                 class="w-100 shadow-1-strong mb-2"
                                                 alt="Boat on Calm Water"
                                                 style={{ borderRadius: '13px 0px 0px 13px' }}
@@ -231,7 +231,7 @@ function PlaceDetails() {
                                         </div>
 
                                         <div class="col-lg-3 mb-4 mb-lg-0" >
-                                            <img src={'http://localhost:3434/images/' + user.image2}
+                                            <img src={'https://airrv-travel.onrender.com/images/' + user.image2}
                                                 class="w-100 shadow-1-strong mb-2"
                                                 alt="Mountains in the Clouds"
                                                 // height="48.3%"
@@ -239,7 +239,7 @@ function PlaceDetails() {
 
                                             />
 
-                                            <img src={'http://localhost:3434/images/' + user.image3}
+                                            <img src={'https://airrv-travel.onrender.com/images/' + user.image3}
                                                 class="w-100 shadow-1-strong mb-2"
                                                 alt="Boat on Calm Water"
                                                 // height="48.3%"
@@ -248,7 +248,7 @@ function PlaceDetails() {
                                         </div>
 
                                         <div class="col-lg-3 mb-4 mb-lg-0">
-                                            <img src={'http://localhost:3434/images/' + user.image4}
+                                            <img src={'https://airrv-travel.onrender.com/images/' + user.image4}
                                                 class="w-100 shadow-1-strong mb-2"
                                                 alt="Waves at Sea"
                                                 // height="48.3%"
@@ -256,7 +256,7 @@ function PlaceDetails() {
                                                 style={{ borderRadius: '0px 13px 0px 0px' }}
                                             />
 
-                                            <img src={'http://localhost:3434/images/' + user.image5}
+                                            <img src={'https://airrv-travel.onrender.com/images/' + user.image5}
                                                 class="w-100 shadow-1-strong mb-2"
                                                 alt="Yosemite National Park"
                                                 // height="48.3%"

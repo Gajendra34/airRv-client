@@ -44,7 +44,7 @@ function Addplace() {
         formData.append("image4", values.image4);
         formData.append("image5", values.image5);
 
-        axios.post('http://localhost:3434/addplace', formData)
+        axios.post('https://airrv-travel.onrender.com/addplace', formData)
             .then(res => {
                 if (res.data.Status === 'Success') {
                     navigate('/')

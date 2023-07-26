@@ -27,7 +27,7 @@ function Signup() {
         formData.append("password", values.password);
         formData.append("image", values.image);
 
-        axios.post('http://localhost:3434/signup', formData)
+        axios.post('https://airrv-travel.onrender.com/signup', formData)
             .then(res => {
                 if (res.data.Status === 'Success') {
                     navigate('/')

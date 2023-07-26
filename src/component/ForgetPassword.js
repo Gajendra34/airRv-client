@@ -42,7 +42,7 @@ function ForgetPassword() {
 
     const handleSubmit1 = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:3434/forgetpassword/' + email1, data1)
+        axios.post('https://airrv-travel.onrender.com/forgetpassword/' + email1, data1)
             .then(res => {
                 if (res.data.Status === 'Success') {
 
@@ -83,7 +83,7 @@ function ForgetPassword() {
         // console.log(emailRef.current.value)
         setEmail1(emailRef.current.value)
 
-        axios.post('http://localhost:3434/sendotp', data)
+        axios.post('https://airrv-travel.onrender.com/sendotp', data)
             .then(res => {
                 if (res.data.Status === 'Success') {
 
@@ -121,7 +121,7 @@ function ForgetPassword() {
 
 
     useEffect(() => {
-        axios.get('http://localhost:3434/')
+        axios.get('https://airrv-travel.onrender.com/')
             .then(res => {
                 if (res.data.Status === 'Success') {
                     if (res.data.role === 'customer') {

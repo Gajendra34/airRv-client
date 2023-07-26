@@ -29,7 +29,7 @@ function Forgotpass() {
     axios.defaults.withCredentials = true;
 
     useEffect(() => {
-        axios.get('http://localhost:3434/')
+        axios.get('https://airrv-travel.onrender.com/')
             .then(res => {
                 if (res.data.Status === 'Success') {
                     if (res.data.role === 'customer') {
@@ -49,14 +49,14 @@ function Forgotpass() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.put('http://localhost:3434/changepassword', data)
+        axios.put('https://airrv-travel.onrender.com/changepassword', data)
             .then(res => {
                 if (res.data.Status === 'Success') {
 
 
                     setTimeout(() => {
                         setAuth(true);
-                        axios.get('http://localhost:3434/logout')
+                        axios.get('https://airrv-travel.onrender.com/logout')
                             .then(res => {
                                 // setAuth(true)
                             })

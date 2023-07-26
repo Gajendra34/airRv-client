@@ -30,7 +30,7 @@ function Header() {
     axios.defaults.withCredentials = true;
 
     useEffect(() => {
-        axios.get('http://localhost:3434/')
+        axios.get('https://airrv-travel.onrender.com/')
             .then(res => {
                 if (res.data.Status === 'Success') {
                     if (res.data.role === 'customer') {
@@ -48,7 +48,7 @@ function Header() {
                 }
             })
 
-        axios.get('http://localhost:3434/Aview')
+        axios.get('https://airrv-travel.onrender.com/Aview')
             .then(res => {
                 if (res.data.Status === 'Success') {
                     setData(res.data.Result)
@@ -61,7 +61,7 @@ function Header() {
     },[])
 
     const handleLogout = () => {
-        axios.get('http://localhost:3434/logout')
+        axios.get('https://airrv-travel.onrender.com/logout')
             .then(res => {
                 setAuth(false)
             })
@@ -69,7 +69,7 @@ function Header() {
     }
 
     const handleShow = (id) => {
-        axios.get('http://localhost:3434/showImg/' + id)
+        axios.get('https://airrv-travel.onrender.com/showImg/' + id)
             .then(res => {
                 if (res.data.Status === 'Success') {
                     setData1(res.data.Result)
@@ -82,7 +82,7 @@ function Header() {
     }
 
     const handleShow1 = (category) => {
-        axios.get('http://localhost:3434/showplaces/' + category)
+        axios.get('https://airrv-travel.onrender.com/showplaces/' + category)
             .then(res => {
                 if (res.data.Status === 'Success') {
                     setData2(res.data.Result)
@@ -95,7 +95,7 @@ function Header() {
     }
 
     const allDetail = (id) => {
-        axios.get('http://localhost:3434/placedetail/' + id)
+        axios.get('https://airrv-travel.onrender.com/placedetail/' + id)
             .then(res => {
                 if (res.data.Status === 'Success') {
                     navigate('/placedetails/' + id);
@@ -160,12 +160,12 @@ function Header() {
                                                     </li> */}
                                             </ul>
 
-                                            {/* {<img src={'http://localhost:3434/images/' + image}
+                                            {/* {<img src={'https://airrv-travel.onrender.com/images/' + image}
                                                 className=" rounded-circle" height="38" alt="Rv" />} */}
 
                                             <div className="dropdown" style={{ position: 'relative', right: '20px' }}>
                                                 <a className=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    {<img src={'http://localhost:3434/images/' + image}
+                                                    {<img src={'https://airrv-travel.onrender.com/images/' + image}
                                                         className=" rounded-circle" height="38" alt="Rv" />}
                                                 </a>
                                                 <ul
@@ -252,19 +252,19 @@ function Header() {
                                         </div> */}
                                             <div className="cross-button1 banner carousel-inner" style={{ borderRadius: '15px' }}>
                                                 <div onClick={e => allDetail(user._id)} className="carousel-item active Slide 1" style={{ cursor: 'pointer' }}>
-                                                    <Card.Img src={'http://localhost:3434/images/' + user.image1} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
+                                                    <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image1} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
                                                 </div>
                                                 {/* <div className="carousel-item">
-                                                    <Card.Img src={'http://localhost:3434/images/' + user.image2} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
+                                                    <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image2} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
                                                 </div>
                                                 <div className="carousel-item">
-                                                    <Card.Img src={'http://localhost:3434/images/' + user.image3} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
+                                                    <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image3} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
                                                 </div>
                                                 <div className="carousel-item">
-                                                    <Card.Img src={'http://localhost:3434/images/' + user.image4} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
+                                                    <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image4} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
                                                 </div>
                                                 <div className="carousel-item">
-                                                    <Card.Img src={'http://localhost:3434/images/' + user.image5} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
+                                                    <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image5} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
                                                 </div> */}
                                                 {/* <div className='cross-button2'>
                                                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -296,11 +296,11 @@ function Header() {
                                                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">{user.about}</h1>
                                                                         </div>
                                                                         <div class="modal-body" style={{ padding: '20px' }}>
-                                                                            <Card.Img src={'http://localhost:3434/images/' + user.image1} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
-                                                                            <Card.Img src={'http://localhost:3434/images/' + user.image2} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
-                                                                            <Card.Img src={'http://localhost:3434/images/' + user.image3} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
-                                                                            <Card.Img src={'http://localhost:3434/images/' + user.image4} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
-                                                                            <Card.Img src={'http://localhost:3434/images/' + user.image5} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
+                                                                            <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image1} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
+                                                                            <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image2} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
+                                                                            <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image3} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
+                                                                            <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image4} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
+                                                                            <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image5} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
                                                                         </div>
 
                                                                     </div>
@@ -346,19 +346,19 @@ function Header() {
                                         </div> */}
                                                 <div className="cross-button1 banner carousel-inner" style={{ borderRadius: '15px' }}>
                                                     <div onClick={e => allDetail(user._id)} className="carousel-item active Slide 1" style={{ cursor: 'pointer' }}>
-                                                        <Card.Img src={'http://localhost:3434/images/' + user.image1} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
+                                                        <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image1} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
                                                     </div>
                                                     {/* <div className="carousel-item">
-                                                        <Card.Img src={'http://localhost:3434/images/' + user.image2} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
+                                                        <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image2} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
                                                     </div>
                                                     <div className="carousel-item">
-                                                        <Card.Img src={'http://localhost:3434/images/' + user.image3} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
+                                                        <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image3} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
                                                     </div>
                                                     <div className="carousel-item">
-                                                        <Card.Img src={'http://localhost:3434/images/' + user.image4} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
+                                                        <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image4} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
                                                     </div>
                                                     <div className="carousel-item">
-                                                        <Card.Img src={'http://localhost:3434/images/' + user.image5} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
+                                                        <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image5} style={{ width: '350px', height: '300px' }} className="d-block w-100" height="300px" alt="..." />
                                                     </div> */}
                                                     {/* <div className='cross-button2'>
                                                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -390,11 +390,11 @@ function Header() {
                                                                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">{user.about}</h1>
                                                                             </div>
                                                                             <div class="modal-body" style={{ padding: '20px' }}>
-                                                                                <Card.Img src={'http://localhost:3434/images/' + user.image1} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
-                                                                                <Card.Img src={'http://localhost:3434/images/' + user.image2} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
-                                                                                <Card.Img src={'http://localhost:3434/images/' + user.image3} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
-                                                                                <Card.Img src={'http://localhost:3434/images/' + user.image4} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
-                                                                                <Card.Img src={'http://localhost:3434/images/' + user.image5} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
+                                                                                <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image1} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
+                                                                                <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image2} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
+                                                                                <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image3} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
+                                                                                <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image4} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
+                                                                                <Card.Img src={'https://airrv-travel.onrender.com/images/' + user.image5} style={{ width: '350px', height: '300px', padding: '10px' }} className="d-block w-100" height="300px" alt="..." />
                                                                             </div>
 
                                                                         </div>
