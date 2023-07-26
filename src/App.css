@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  margin-right: 10px;
+  margin-left: 20px;
 }
 
 .App-logo {
@@ -32,7 +34,87 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+
+.navbar11 {
+  position: relative;
+  top: -8px;
+}
+
+.li1 a {
+  text-decoration: none;
+  color: black;
+  background-image: linear-gradient(black, black);
+  background-size: 0% 2px;
+  background-position-y: 80%;
+  background-position-x: 50%;
+  /* background-position-x: 50%; */
+  background-repeat: no-repeat;
+  transition: 0.2s;
+}
+
+.li1 a:hover {
+  background-size: 76% 2px;
+  size: 20px;
+}
+
+
+
+div.scrollmenu {
+  background-color: white;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu::-webkit-scrollbar {
+  display: none;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: #777;
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+  background-image: linear-gradient(black, black);
+  background-size: 0% 2px;
+  background-position-y: 90%;
+  background-position-x: 50%;
+  /* background-position-x: 50%; */
+  background-repeat: no-repeat;
+  /* transition: 0.2s; */
+}
+
+
+div.scrollmenu a:hover {
+  color: black;
+  background-size: 76% 2px;
+  /* size:100px; */
+}
+
+div.scrollmenu a:focus {
+  color: black;
+  background-size: 76% 2px;
+}
+
+/* .cross-button2 {
+  visibility: hidden;
+}
+
+
+.cross-button1:hover .cross-button2 {
+  visibility: visible;
+} */
+
+
+.add_pro {
+  background-image: url('https://wallpapercave.com/dwp1x/wp3248705.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
