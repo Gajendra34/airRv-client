@@ -57,7 +57,7 @@ function PlaceDetails() {
                     alert('Error in show images');
                 }
             })
-    },[])
+    }, [])
 
 
     const handleLogout = () => {
@@ -174,7 +174,7 @@ function PlaceDetails() {
                                                         <Link to='/changepassword' className="dropdown-item" href="#">Change Password</Link>
                                                     </li>
                                                     <li >
-                                                        <a className="dropdown-item" href="#">Contact</a>
+                                                        <Link to='/contact' className="dropdown-item" href="#">Contact</Link>
                                                     </li>
                                                     <li>
                                                         <Link to="/" onClick={handleLogout} className="dropdown-item btn btn-outline-danger">Logout</Link>

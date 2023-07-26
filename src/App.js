@@ -10,6 +10,7 @@ import Booking from './component/Booking';
 import BookingDetails from './component/BookingDetails';
 import ChangePassword from './component/ChangePassword'
 import ForgetPassword from './component/ForgetPassword'
+import Contact from './component/Contact';
 
 
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='/bookingdetails/:id' element={<BookingDetails />}></Route>
           <Route path='/changepassword' element={<ChangePassword />}></Route>
           <Route path='/forgetpassword' element={<ForgetPassword />}></Route>
+          <Route path='/contact' element={<Contact />}></Route>
         </Routes >
       </BrowserRouter >
     </div >
