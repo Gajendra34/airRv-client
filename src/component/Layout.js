@@ -25,6 +25,7 @@ function Header() {
     const [image, setImage] = useState('');
     const [name, setName] = useState('');
     const [cus_id, setCus_id] = useState('');
+    const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
 
@@ -84,6 +85,7 @@ function Header() {
             .then(res => {
                 if (res.data.Status === 'Success') {
                     setData1(res.data.Result)
+                    setLoading(false)
                 }
                 else {
                     alert('Error in show images');
@@ -132,10 +134,6 @@ function Header() {
     // const goBookingHistory = () => {
     //     navigate('/bookingdetails/' + cus_id)
     // }
-
-
-
-    const [loading, setLoading] = useState(true);
 
 
 
