@@ -9,6 +9,16 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 
+
+
+import HashLoader from "react-spinners/HashLoader";
+
+
+
+
+
+
+
 function Header() {
 
     const [auth, setAuth] = useState('');
@@ -52,11 +62,13 @@ function Header() {
             .then(res => {
                 if (res.data.Status === 'Success') {
                     setData(res.data.Result)
+                    setLoading(false)
                 }
                 else {
                     alert('Error in add item');
                 }
             })
+        setLoading(false)
 
     }, [])
 
@@ -123,8 +135,21 @@ function Header() {
     // }
 
 
+
+    const [loading, setLoading] = useState(true);
+
+
+
+
+
+
+
+
+
     return (
         <>
+
+
             <nav className="navbar navbar-expand-lg bg-body-tertiary bg-transparent w-100">
                 <div className="navbar11 container-fluid">
                     <Link to="/" title='airRv' className="navbar-brand fs-4 p-3"><img src={logo} width="50px" /></Link>
@@ -213,6 +238,7 @@ function Header() {
             <span style={{ color: 'rgb(169,169,169)' }}><hr /></span>
 
 
+
             <div className="scrollmenu">
                 <Link to='/' onClick={showcon1}><p><img src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg" height="25px" /></p>Amazing views</Link>
                 <Link to='/' onClick={() => { showcon(); handleShow1('Rooms') }}><p><img src="https://a0.muscache.com/pictures/7630c83f-96a8-4232-9a10-0398661e2e6f.jpg" height="25px" /></p>Rooms</Link>
@@ -233,6 +259,20 @@ function Header() {
 
 
             <span style={{ color: 'rgb(169,169,169)' }}><hr /></span>
+
+
+
+
+            <div class="row d-flex justify-content-center">
+                <HashLoader
+                    color="#36d7b7"
+                    loading={loading}
+                    size={60}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
+            </div>
+
 
 
             {
