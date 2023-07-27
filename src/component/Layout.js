@@ -68,7 +68,6 @@ function Header() {
                     alert('Error in add item');
                 }
             })
-        setLoading(false)
 
     }, [])
 
