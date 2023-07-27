@@ -8,6 +8,15 @@ import { useLocation } from 'react-router-dom'
 
 
 
+
+
+import HashLoader from "react-spinners/HashLoader";
+
+
+
+
+
+
 function BookingDetails() {
 
     const { id } = useParams();
@@ -15,6 +24,7 @@ function BookingDetails() {
     // const [cus_id, setCus_id] = useState('');
     const [data, setData] = useState([]);
     const [data1, setData1] = useState([]);
+    const [loading, setLoading] = useState(true);
 
 
 
@@ -45,12 +55,13 @@ function BookingDetails() {
             .then(res => {
                 if (res.data.Status === 'Success') {
                     setData(res.data.Result)
+                    setLoading(false)
                 }
                 else {
                     alert('Error in show images');
                 }
             })
-    },[])
+    }, [])
 
     const showDetails = (id) => {
         axios.get('https://airrv-travel.onrender.com/showImg/' + id)
@@ -104,7 +115,15 @@ function BookingDetails() {
 
             <span style={{ color: 'rgb(169,169,169)' }}><hr /></span>
 
-
+            {/* <div class="row d-flex justify-content-center">
+                <HashLoader
+                    color="#36d7b7"
+                    loading={loading}
+                    size={60}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
+            </div> */}
 
             <section class="h-100 gradient-custom">
                 <div class="container py-5 h-100">
@@ -174,7 +193,7 @@ function BookingDetails() {
                                                                                                             {a1.about}
                                                                                                         </div>
                                                                                                         <div className="price" style={{ fontSize: '10px' }} ><i class="bi bi-star-fill"></i> {a1.rating} . Superhost</div>
-                                                                                                        <div className="price" style={{ fontSize: '10px',fontWeight:'bold' }} ><i class="bi bi-currency-rupee"></i> {parseInt(a1.price).toLocaleString()} per night</div>
+                                                                                                        <div className="price" style={{ fontSize: '10px', fontWeight: 'bold' }} ><i class="bi bi-currency-rupee"></i> {parseInt(a1.price).toLocaleString()} per night</div>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
@@ -195,14 +214,23 @@ function BookingDetails() {
                                     </div>
                                 </div>
                                 :
-
                                 <div>
                                     <h2>You Don't have any Booking Places</h2>
                                 </div>
                         }
                     </div>
                 </div>
+                <div class="row d-flex justify-content-center">
+                <HashLoader
+                    color="#36d7b7"
+                    loading={loading}
+                    size={60}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
+            </div>
             </section>
+            
 
 
 
