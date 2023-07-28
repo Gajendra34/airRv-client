@@ -6,7 +6,16 @@ import { useNavigate } from 'react-router-dom'
 import logo from './logo-travel.png';
 
 
+
+import BeatLoader from "react-spinners/BeatLoader";
+
+
 function Login() {
+
+
+    const [loading, setLoading] = useState(true);
+    const [login, setLogin] = useState(true)
+
 
     const [values, setValues] = useState({
         email: '',
@@ -24,7 +33,11 @@ function Login() {
         axios.post('https://airrv-travel.onrender.com/login', values)
             .then(res => {
                 if (res.data.Status === 'Success') {
-                    navigate('/')
+                    setLogin(false)
+                    setTimeout(() => {
+                        navigate('/')
+                    }, 2000)
+
                 } else {
                     setError(res.data.Error)
                 }
@@ -91,8 +104,20 @@ function Login() {
                                 <div className="justify-content-around mb-4 text-dark">
                                     <Link to='/forgetpassword' href="#!">Forgot password?</Link>
                                 </div>
-                                <button type="submit" className="btn btn-outline-primary btn-lg btn-block">Login</button>
-
+                                {
+                                    login ?
+                                        <button type="submit" className="btn btn-outline-primary btn-lg btn-block">Login</button>
+                                        :
+                                        <button type="submit" className="btn btn-outline-primary btn-lg btn-block">
+                                            <BeatLoader
+                                                color="#36d7b7"
+                                                loading={loading}
+                                                size={13.5}
+                                                aria-label="Loading Spinner"
+                                                data-testid="loader"
+                                            />
+                                        </button>
+                                }
                                 <p className=" text-muted mt-5 mb-0">Don't have an account?
                                     <Link to='/signup'><a href="#!" className="fw-bold text-danger"><u>Register here</u></a></Link></p>
                             </form>

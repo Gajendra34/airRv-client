@@ -24,6 +24,7 @@ function BookingDetails() {
     // const [cus_id, setCus_id] = useState('');
     const [data, setData] = useState([]);
     const [data1, setData1] = useState([]);
+    const [data2, setData2] = useState([]);
     const [loading, setLoading] = useState(true);
 
 
@@ -145,6 +146,12 @@ function BookingDetails() {
                                                     <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"
                                                         class="img-fluid" alt="Phone" />
                                                 </div> */}
+                                                                <p>Payment: <span class="badge text-bg-success">Success</span>
+                                                                </p>
+                                                                {/* <span class="badge text-bg-success">Success</span> */}
+                                                                {/* < p value> Payment: <span class="badge text-bg-warning"> Pending</span></p> */}
+
+
                                                                 <div class="d-flex justify-content-between pt-2">
                                                                     <p class="fw-bold mb-0">Booking Details</p>
                                                                     <p class="text-muted mb-0"><span class="fw-bold me-4">Total Price</span><i class="bi bi-currency-rupee"></i>{a.price}</p>
@@ -221,16 +228,16 @@ function BookingDetails() {
                     </div>
                 </div>
                 <div class="row d-flex justify-content-center">
-                <HashLoader
-                    color="#36d7b7"
-                    loading={loading}
-                    size={60}
-                    aria-label="Loading Spinner"
-                    data-testid="loader"
-                />
-            </div>
+                    <HashLoader
+                        color="#36d7b7"
+                        loading={loading}
+                        size={60}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                    />
+                </div>
             </section>
-            
+
 
 
 

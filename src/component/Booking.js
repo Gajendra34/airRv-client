@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 
+
 import { useLocation } from 'react-router-dom';
 
 
@@ -41,12 +42,14 @@ function Booking() {
         stay_day: location.state.date
     })
 
+    const [auth1, setAuth1] = useState(true);
+
     const handleSubmit1 = (event) => {
         event.preventDefault();
         axios.post('https://airrv-travel.onrender.com/pay_detail', values1)
             .then(res => {
                 if (res.data.Status === 'Success') {
-                    navigate('/')
+                    setAuth1(false);
                 }
                 else {
                     setError(res.data.Error)
@@ -79,7 +82,7 @@ function Booking() {
                     setAuth(false)
                 }
             })
-    },[])
+    }, [])
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -93,6 +96,15 @@ function Booking() {
                 }
             })
             .then(err => console.log(err))
+    }
+
+    const goPayment=()=>{
+        navigate('/payment',{
+            state:{
+                totalPrice:(parseInt(location.state.price) * parseInt(location.state.date) + 3500 + 500 + 1200).toLocaleString(),
+                category:location.state.category
+            }
+        })
     }
 
 
@@ -214,30 +226,33 @@ function Booking() {
                                 auth ?
                                     <>
                                         <hr />
-                                        <h3>Please fill the details</h3>
-                                        <div className='text-danger'>
-                                            {error && error}
-                                        </div>
-                                        <form onSubmit={handleSubmit1}>
-                                            <div className="form-floating form-outline mb-4">
-                                                <input type="email" id="form1Example13" onChange={e => setValues1({ ...values1, email: e.target.value })} placeholder="Email address"
-                                                    className="form-control form-control-lg border border-dark" />
-                                                <label className="form-label" htmlFor="floatingInput form1Example13">Email address</label>
-                                            </div>
+                                        {
+                                            auth1 ?
+                                                <>
+                                                    <h3>Please fill the details</h3>
+                                                    <div className='text-danger'>
+                                                        {error && error}
+                                                    </div>
+                                                    <form onSubmit={handleSubmit1}>
+                                                        <div className="form-floating form-outline mb-4">
+                                                            <input type="email" id="form1Example13" onChange={e => setValues1({ ...values1, email: e.target.value })} placeholder="Email address"
+                                                                className="form-control form-control-lg border border-dark" />
+                                                            <label className="form-label" htmlFor="floatingInput form1Example13">Email address</label>
+                                                        </div>
 
-                                            <div className="form-floating form-outline mb-4">
-                                                <input type="text" id="form1Example13" onChange={e => setValues1({ ...values1, name: e.target.value })} placeholder="Last Name"
-                                                    className="form-control form-control-lg border border-dark" />
-                                                <label className="form-label" htmlFor="floatingInput form1Example13">Full Name</label>
-                                            </div>
+                                                        <div className="form-floating form-outline mb-4">
+                                                            <input type="text" id="form1Example13" onChange={e => setValues1({ ...values1, name: e.target.value })} placeholder="Last Name"
+                                                                className="form-control form-control-lg border border-dark" />
+                                                            <label className="form-label" htmlFor="floatingInput form1Example13">Full Name</label>
+                                                        </div>
 
-                                            <div className="form-floating form-outline mb-4">
-                                                <input type="text" id="form1Example13" onChange={e => setValues1({ ...values1, phone: e.target.value })} placeholder="Last Name"
-                                                    className="form-control form-control-lg border border-dark" />
-                                                <label className="form-label" htmlFor="floatingInput form1Example13">Phone</label>
-                                            </div>
+                                                        <div className="form-floating form-outline mb-4">
+                                                            <input type="text" id="form1Example13" onChange={e => setValues1({ ...values1, phone: e.target.value })} placeholder="Last Name"
+                                                                className="form-control form-control-lg border border-dark" />
+                                                            <label className="form-label" htmlFor="floatingInput form1Example13">Phone</label>
+                                                        </div>
 
-                                            {/* <div className="form-floating form-outline mb-4" style={{ display: '' }}>
+                                                        {/* <div className="form-floating form-outline mb-4" style={{ display: '' }}>
                                                 <input type="text" id="form1Example13" onChange={e => setValues1({ ...values1, price: e.target.value })} placeholder="Last Name" value={(parseInt(location.state.price) * parseInt(location.state.date) + 3500 + 500 + 1200).toLocaleString()}
                                                     className="form-control form-control-lg border border-dark" />
                                                 <label className="form-label" htmlFor="floatingInput form1Example13">Price</label>
@@ -268,11 +283,12 @@ function Booking() {
                                                     className="form-control form-control-lg border border-dark" />
                                                 <label className="form-label" htmlFor="floatingInput form1Example13">stay_day</label>
                                             </div> */}
-
-
-
-                                            <button type="submit" class="btn" style={{ backgroundColor: '#FF385C', color: 'white', width: '30vh' }}>Checkout</button>
-                                        </form>
+                                                        <button type="submit" class="btn" style={{ backgroundColor: '#FF385C', color: 'white', width: '30vh' }}>Checkout</button>
+                                                    </form>
+                                                </>
+                                                :
+                                                <button type="submit" onClick={goPayment} class="btn" style={{ backgroundColor: '#FF385C', color: 'white', width: '30vh' }}>Pay now</button>
+                                        }
 
 
                                     </>

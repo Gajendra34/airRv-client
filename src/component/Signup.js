@@ -6,7 +6,16 @@ import { Link } from 'react-router-dom'
 import logo from './logo-travel.png'
 
 
+import BeatLoader from "react-spinners/BeatLoader";
+
+
 function Signup() {
+
+
+    const [loading, setLoading] = useState(true);
+    const [login, setLogin] = useState(true)
+
+
 
     const [values, setValues] = useState({
         name: '',
@@ -30,7 +39,10 @@ function Signup() {
         axios.post('https://airrv-travel.onrender.com/signup', formData)
             .then(res => {
                 if (res.data.Status === 'Success') {
-                    navigate('/')
+                    setLogin(false)
+                    setTimeout(() => {
+                        navigate('/')
+                    }, 2000)
                 }
                 else {
                     setError(res.data.Error)
@@ -111,8 +123,21 @@ function Signup() {
                                 {/* <div className="justify-content-around mb-4">
                 <a href="#!">Forgot password?</a>
               </div> */}
-                                <button type="submit" className="btn btn-outline-primary btn-lg btn-block">Create Account</button>
+                                {
+                                    login ?
+                                        <button type="submit" className="btn btn-outline-primary btn-lg btn-block">Create Account</button>
+                                        :
+                                        <button type="submit" className="btn btn-outline-primary btn-lg btn-block">
+                                            <BeatLoader
+                                                color="#36d7b7"
+                                                loading={loading}
+                                                size={13.5}
+                                                aria-label="Loading Spinner"
+                                                data-testid="loader"
+                                            />
+                                        </button>
 
+                                }
                                 <p className=" text-muted mt-5 mb-0">Have already an account?
                                     <Link to='/Login'><a href="#!" className="fw-bold text-body"><u> Login here</u></a></Link></p>
                             </form>
