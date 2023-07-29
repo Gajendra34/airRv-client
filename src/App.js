@@ -20,8 +20,7 @@ function App() {
     <div className='App'>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Layout />}>
-          </Route>
+          <Route path='/' element={<Layout />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/Signup' element={<Signup />}></Route>
           <Route path='/addplace' element={<Addplace />}></Route>

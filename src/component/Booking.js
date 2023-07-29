@@ -39,7 +39,8 @@ function Booking() {
         chk_in: location.state.date1,
         chk_out: location.state.date2,
         pro_id: location.state.id,
-        stay_day: location.state.date
+        stay_day: location.state.date,
+        paymentstatus: 'Pending'
     })
 
     const [auth1, setAuth1] = useState(true);
@@ -98,11 +99,11 @@ function Booking() {
             .then(err => console.log(err))
     }
 
-    const goPayment=()=>{
-        navigate('/payment',{
-            state:{
-                totalPrice:(parseInt(location.state.price) * parseInt(location.state.date) + 3500 + 500 + 1200).toLocaleString(),
-                category:location.state.category
+    const goPayment = () => {
+        navigate('/payment', {
+            state: {
+                totalPrice: (parseInt(location.state.price) * parseInt(location.state.date) + 3500 + 500 + 1200).toLocaleString(),
+                category: location.state.category
             }
         })
     }

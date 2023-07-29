@@ -24,7 +24,6 @@ function BookingDetails() {
     // const [cus_id, setCus_id] = useState('');
     const [data, setData] = useState([]);
     const [data1, setData1] = useState([]);
-    const [data2, setData2] = useState([]);
     const [loading, setLoading] = useState(true);
 
 
@@ -79,7 +78,53 @@ function BookingDetails() {
 
     const showAllDetail = (id) => {
         navigate('/placedetails/' + id)
-        window.location.reload();
+        // window.location.reload();
+    }
+
+
+
+    const [data3, setData3] = useState([])
+
+    const findPrice = (p) => {
+        axios.get('https://airrv-travel.onrender.com/findprice/' + p)
+            .then(res => {
+                if (res.data.Status === 'Success') {
+                    setData3(res.data.Result)
+                }
+                else {
+                    alert('Error in show images');
+                }
+            })
+            .catch(err => (console.log(err)))
+    }
+
+
+
+
+    const dt = data3.map((a, b) => { return (a.price) })
+
+    const [data2, setData2] = useState({
+        cardname: '',
+        cardnumber: '',
+        expire: '',
+        cvv: '',
+        paymentstatus: 'Success'
+    })
+
+    const [auth, setAuth] = useState(true);
+    const [error, setError] = useState('');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        axios.post('https://airrv-travel.onrender.com/payment/' + dt, data2)
+            .then(res => {
+                if (res.data.Status) {
+                    setAuth(false)
+                }
+                else {
+                    setError(res.data.Error)
+                }
+            }).catch(err => console.log(err))
     }
 
 
@@ -146,8 +191,109 @@ function BookingDetails() {
                                                     <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"
                                                         class="img-fluid" alt="Phone" />
                                                 </div> */}
-                                                                <p>Payment: <span class="badge text-bg-success">Success</span>
-                                                                </p>
+
+
+                                                                {a.paymentstatus === 'Pending'
+                                                                    ?
+                                                                    <>
+                                                                        < p> Payment:
+                                                                            <button type="button" onClick={e => findPrice(a.price)} class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                                <span class="badge text-bg-warning">{a.paymentstatus}</span>
+                                                                                {/* setPrice(a.price) */}
+                                                                            </button>
+                                                                        </p>
+                                                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">For Pending Payment</h1>
+                                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                    </div>
+                                                                                    <section class="p-4 p-md-3">
+                                                                                        <div class="row d-flex justify-content-center">
+                                                                                            {
+                                                                                                auth ?
+                                                                                                    <div class="card-body p-4">
+                                                                                                        <div class="text-center mb-4">
+                                                                                                            <h3>Payment</h3>
+                                                                                                        </div>
+                                                                                                        {/* {
+                                                                                                            data3.map((aa, bb) => {
+                                                                                                                return <div class="d-flex justify-content-between mt-2">
+                                                                                                                    <span><b>Total.(INR).</b></span><span><b><i class="bi bi-currency-rupee"></i>{aa.price}</b></span>
+                                                                                                                </div >
+                                                                                                            })
+                                                                                                        } */}
+                                                                                                        <hr />
+                                                                                                        <form onSubmit={handleSubmit}>
+                                                                                                            <div className='text-danger'>
+                                                                                                                {error && error}
+                                                                                                            </div>
+
+                                                                                                            {
+                                                                                                                data3.map((aa, bb) => {
+                                                                                                                    return <div class="d-flex justify-content-between mt-2">
+                                                                                                                        <span><b>Total.(INR).</b></span><span><b><i class="bi bi-currency-rupee"></i><input id='price' disabled value={aa.price} /></b></span>
+                                                                                                                    </div >
+                                                                                                                })
+                                                                                                            }
+
+                                                                                                            <hr />
+                                                                                                            <div class="form-outline mb-3">
+                                                                                                                <label class="form-label" for="formControlLgXM8">Card Holder name</label>
+                                                                                                                <input type="text" onChange={e => setData2({ ...data2, cardname: e.target.value })} id="formControlLgXM8" class="form-control border-dark"
+                                                                                                                    placeholder="John" />
+                                                                                                            </div>
+
+                                                                                                            <div class="form-outline mb-3">
+                                                                                                                <label class="form-label" for="formControlLgXM8">Card Number</label>
+                                                                                                                <input type="text" onChange={e => setData2({ ...data2, cardnumber: e.target.value })} id="formControlLgXM8" class="form-control border-dark"
+                                                                                                                    placeholder="1234 1234 1234 1234" />
+                                                                                                            </div>
+
+                                                                                                            <div class="row mb-3">
+                                                                                                                <div class="col-6">
+                                                                                                                    <div class="form-outline">
+                                                                                                                        <label class="form-label" for="formControlLgExpk8">Expire</label>
+                                                                                                                        <input type="text" onChange={e => setData2({ ...data2, expire: e.target.value })} id="formControlLgExpk8" class="form-control border-dark"
+                                                                                                                            placeholder="MM/YYYY" />
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="col-6">
+                                                                                                                    <div class="form-outline">
+                                                                                                                        <label class="form-label" for="formControlLgcvv8">Cvv</label>
+                                                                                                                        <input type="password" onChange={e => setData2({ ...data2, cvv: e.target.value })} id="formControlLgcvv8" class="form-control border-dark" placeholder="Cvv" />
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <button class="btn btn-success btn-lg btn-block">Pay now</button>
+                                                                                                        </form>
+                                                                                                    </div>
+                                                                                                    :
+                                                                                                    <div class="d-flex justify-content-center align-items-center mb-5">
+                                                                                                        <div class="d-flex flex-row align-items-center">
+                                                                                                            <div class="justify-content-between mt-2">
+                                                                                                                <span className='mx-2' style={{ fontWeight: 'bold', fontSize: '30px', color: 'green' }}><i class="bi bi-check-circle"></i></span><br />
+                                                                                                                <span className='mx-2' style={{ fontWeight: 'bold', fontSize: '20px', color: 'green' }}>Your Payment Successfully Done!</span>
+                                                                                                                <br />
+                                                                                                                <Link to='/'> <button type="button" data-bs-dismiss="modal" aria-label="Close" style={{ color: 'dark' }} className="btn btn-light"> Go Homepage </button>
+                                                                                                                </Link>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                            }
+                                                                                        </div>
+                                                                                    </section>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </>
+                                                                    :
+                                                                    < p > Payment: <span class="badge text-bg-success">{a.paymentstatus}</span></p>
+                                                                }
+
+
+
                                                                 {/* <span class="badge text-bg-success">Success</span> */}
                                                                 {/* < p value> Payment: <span class="badge text-bg-warning"> Pending</span></p> */}
 
@@ -190,7 +336,7 @@ function BookingDetails() {
                                                                                             <div class="d-flex justify-content-between">
                                                                                                 <div className="d-flex align-items-center mb-4">
                                                                                                     <div className="me-3 position-relative">
-                                                                                                        <img onClick={e => showAllDetail(a1._id)} src={'https://airrv-travel.onrender.com/images/' + a1.image1} style={{ height: '96px', width: '96px', cursor: 'pointer' }} className="img-sm rounded border" />
+                                                                                                        <img data-bs-dismiss="modal" aria-label="Close" onClick={e => showAllDetail(a1._id)} src={'https://airrv-travel.onrender.com/images/' + a1.image1} style={{ height: '96px', width: '96px', cursor: 'pointer' }} className=" img-sm rounded border" />
                                                                                                     </div>
                                                                                                     <div className="mb-4">
                                                                                                         <div style={{ fontSize: '13px' }} className="nav-link text-muted">

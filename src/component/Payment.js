@@ -19,10 +19,8 @@ function Payment() {
             .then(res => {
                 if (res.data.Status === 'Success') {
                     if (res.data.role === 'customer') {
-                        // navigate('/checkout')
                     }
                     else {
-                        // setAuth(false)
                         navigate('/')
                     }
                 }
@@ -37,7 +35,8 @@ function Payment() {
         cardnumber: '',
         expire: '',
         cvv: '',
-        Tprice: location.state.totalPrice
+        Tprice: location.state.totalPrice,
+        paymentstatus:'Success'
     })
 
     const [auth, setAuth] = useState(true);
