@@ -3,7 +3,7 @@ import React from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Card from 'react-bootstrap/Card';
-import logo from './logo-travel.png'
+import logo from './logo.png'
 import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import logo from './logo-travel.png'
+import logo from './logo.png'
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'

@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from './logo-travel.png'
+import logo from './logo.png'
 import { Link } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useEffect, useState } from 'react';

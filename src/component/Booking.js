@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from './logo-travel.png'
+import logo from './logo.png'
 import { Link, useParams } from 'react-router-dom'
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useNavigate } from 'react-router-dom';
