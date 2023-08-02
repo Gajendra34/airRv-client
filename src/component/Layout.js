@@ -197,9 +197,9 @@ function Header() {
                                                         <div className="dropdown-item text-primary"><spa className="text-dark">Hello! </spa>{name}</div>
                                                     </li>
                                                     <hr />
-                                                    <li >
+                                                    {/* <li >
                                                         <Link to="/addplace" className="dropdown-item" href="#">Add place/Category</Link>
-                                                    </li>
+                                                    </li> */}
                                                     <li >
                                                         <Link to={'/bookingdetails/' + cus_id} className="dropdown-item" href="#">Booking Detail</Link>
                                                     </li>
