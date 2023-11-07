@@ -74,6 +74,7 @@ function Booking() {
                 if (res.data.Status === 'Success') {
                     if (res.data.role === 'customer') {
                         setAuth(true);
+
                     }
                     else {
                         setAuth(false)
@@ -90,7 +91,9 @@ function Booking() {
         axios.post('https://airrv-travel.onrender.com/login', values)
             .then(res => {
                 if (res.data.Status === 'Success') {
+                    // navigate('/placedetails/' + location.state.id)
                     setAuth(true)
+                    console.log(res.data);
                 } else {
                     setAuth(false)
                     setError(res.data.Error)

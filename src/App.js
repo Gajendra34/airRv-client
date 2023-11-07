@@ -26,6 +26,7 @@ function App() {
           <Route path='/addplace' element={<Addplace />}></Route>
           <Route path='/placedetails/:id' element={<PlaceDetails />}></Route>
           <Route path='/booking' element={<Booking />}></Route>
+          <Route path='/booking/:id' element={<Booking />}></Route>
           <Route path='/bookingdetails/:id' element={<BookingDetails />}></Route>
           <Route path='/changepassword' element={<ChangePassword />}></Route>
           <Route path='/forgetpassword' element={<ForgetPassword />}></Route>

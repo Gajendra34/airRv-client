@@ -262,7 +262,7 @@ function Header() {
 
             <div class="row d-flex justify-content-center">
                 <HashLoader
-                    color="#36d7b7"
+                    color="black"
                     loading={loading}
                     size={60}
                     aria-label="Loading Spinner"

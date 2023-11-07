@@ -79,11 +79,14 @@ function PlaceDetails() {
         const date1 = new Date(t1);
         const date2 = new Date(t2);
 
-        const time = Math.abs(date2 - date1);
-
-        if (t2.length !== 0) {
-            const days = Math.ceil(time / (1000 * 60 * 60 * 24));
-            setDate(days)
+        const time =(date2 - date1);
+        if (time >= 1) {
+            if (t1.length !== 0) {
+                if (t2.length !== 0) {
+                    const days = Math.ceil(time / (1000 * 60 * 60 * 24));
+                    setDate(days)
+                }
+            }
         }
     }
 
@@ -92,6 +95,21 @@ function PlaceDetails() {
 
 
     const goBookingPage = () => {
+        // const data={
+        //     date1: document.getElementById('time1').value,
+        //     date2: document.getElementById('time2').value,
+        //     date: date,
+        //     id: id,
+        //     owner: data.map((a, b) => { return (a.owner) }),
+        //     about: data.map((a, b) => { return (a.about) }),
+        //     category: data.map((a, b) => { return (a.category) }),
+        //     rating: data.map((a, b) => { return (a.rating) }),
+        //     price: data.map((a, b) => { return (a.price) }),
+        //     image1: data.map((a, b) => { return (a.image1) }),
+        //     cus_id: cus_id,
+        // }
+        // window.sessionStorage.setItem("bookingData",JSON.stringify(data))
+        
         navigate('/booking', {
             state: {
                 date1: document.getElementById('time1').value,
